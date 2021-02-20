@@ -1,8 +1,6 @@
 Ansible wpa_supplicant role
 ===========================
 
-[![Ansible Role](https://img.shields.io/ansible/role/21206.svg)](https://galaxy.ansible.com/WanderlandTravelers/wpa_supplicant/)
-
 Ansible role for managing wifi networks. Run `man wpa_supplicant.conf` for more information
 
 Requirements
