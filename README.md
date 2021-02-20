@@ -6,7 +6,7 @@ Ansible role for managing wifi networks. Run `man wpa_supplicant.conf` for more 
 Requirements
 ------------
 
-Ansible 2.3 or higher
+Ansible 2.5 or higher
 
 Role Variables
 --------------
