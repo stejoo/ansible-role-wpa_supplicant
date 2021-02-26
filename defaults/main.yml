@@ -5,3 +5,7 @@ wpa_ctrl_interface: DIR=/var/run/wpa_supplicant GROUP=netdev
 wpa_passphrase: yes
 wpa_networks: []
 wpa_update_config: 1
+
+# Make use of a wpa_upplicant@<iface>.service instance (default: no)
+wpa_supplicant_use_systemd_interface_instance: no
+wpa_supplicant_interface: wlan0

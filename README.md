@@ -25,6 +25,11 @@ Here is a list of variables you can use to control playback:
 
 * `wpa_update_config`: The value for `update_config` in `/etc/wpa_supplicant/wpa_supplicant.conf`. Defaults to `1`
 
+* `wpa_supplicant_use_systemd_interface_instance`: Create a systemd `wpa_supplicant@<iface>.service` instance. This instance is used to control `wpa_supplicant` for the specified interface. Useful with network management tools that do not perform AP association themselves. Default is `no`
+
+* `wpa_supplicant_interface`: wireless network interface to control with the service instance. Only used when `wpa_supplicant_use_systemd_interface_instance` is enabled. Defaults to `wlan0`
+
+
 License
 -------
 

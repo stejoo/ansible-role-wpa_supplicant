@@ -35,4 +35,28 @@
     group: root
     mode: 0600
   no_log: true
-  notify: Reconfigure wpa_supplicant
+  notify:
+    - Reconfigure wpa_supplicant
+    - Restart wpa_supplicant interface instance
+
+- name: Ensure symlink for wpa_supplicant interface instance
+  become: yes
+  file:
+    path: "/etc/wpa_supplicant/wpa_supplicant-{{ wpa_supplicant_interface }}.conf"
+    src: /etc/wpa_supplicant/wpa_supplicant.conf
+    state: link
+    owner: root
+    group: root
+  when:
+    - wpa_supplicant_use_systemd_interface_instance
+    - wpa_supplicant_interface in ansible_interfaces
+
+- name: Ensure wpa_supplicant interface instance
+  become: yes
+  systemd:
+    name: "wpa_supplicant@{{ wpa_supplicant_interface }}.service"
+    enabled: yes
+    state: started
+  when:
+    - wpa_supplicant_use_systemd_interface_instance
+    - wpa_supplicant_interface in ansible_interfaces

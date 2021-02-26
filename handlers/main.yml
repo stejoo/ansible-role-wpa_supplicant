@@ -6,3 +6,12 @@
   async: 1
   poll: 0
   when: wpa_cli_reconfigure
+
+- name: Restart wpa_supplicant interface instance
+  become: yes
+  systemd:
+    name: "wpa_supplicant@{{ wpa_supplicant_interface }}.service"
+    state: restarted
+  when:
+    - wpa_supplicant_use_systemd_interface_instance
+    - wpa_supplicant_interface in ansible_interfaces
